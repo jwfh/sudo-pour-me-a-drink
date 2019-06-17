@@ -1,0 +1,298 @@
+\newif\ifdraft
+\draftfalse
+\newif\ifblanks
+\blanksfalse
+
+\RequirePackage{luatex85}
+
+\documentclass[11pt, twoside]{book}
+\ifdraft
+\usepackage[showframe]{geometry}
+\else
+\usepackage{geometry}
+\fi 
+\geometry{%
+	papersize={4in,5in},
+	footskip = \dimexpr\headsep-\ht\strutbox\relax,
+	margin=0.6in,
+	top=0.5in,
+}
+\usepackage{graphicx}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[overload]{textcase}
+\usepackage{array}
+\usepackage{xfrac}
+\usepackage{capt-of}
+\usepackage{amsmath, amssymb}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\mdfsetup{linewidth=.5pt}
+\usepackage[cam, width=5in, height=6in, center]{crop}
+\usepackage{microtype}
+\usepackage{listings}
+\usepackage{enumitem}
+\setenumerate[1]{label=(\arabic*)}
+\setenumerate[2]{label=(\alph*)}
+\setenumerate[3]{label=(\roman*)}
+\setlist[itemize]{itemsep=-.5ex}
+\RequirePackage{fontspec}
+\setmainfont{GaramondPremrPro-Medium.otf}[
+	Ligatures=TeX,	
+	BoldFont=GaramondPremrPro-Bold.otf,
+	ItalicFont=GaramondPremrPro-MediumItalic.otf,
+	BoldItalicFont=GaramondPremrPro-BoldItalic.otf,
+	Scale=1.125,
+	% Numbers=OldStyle
+]
+\setmonofont[Ligatures=TeX,Scale=.85,BoldFont={Inconsolata-Bold.ttf}]{Inconsolata-Regular.ttf}
+\urlstyle{tt}
+
+\setcounter{secnumdepth}{2}
+
+\reversemarginpar
+\setlength{\marginparsep}{-5mm}
+\renewcommand{\arraystretch}{1.25}
+
+\def\maketitle{%
+	\twocolumn[%
+		\begin{center}%
+			\Huge Drink Recipes
+		\end{center}%
+		\vskip 2pc%
+	]
+}
+
+\newcommand{\half}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 2}\,}}
+\newcommand{\onequarter}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 4}\,}}
+\newcommand{\threequarter}{\ensuremath{\sfrac{\mathrm 3}{\mathrm 4}\,}}
+\newenvironment{drink}[1]{%
+	\cleardoublepage
+	\begin{center}
+		\Large #1
+	\end{center}
+}{\newpage}
+\newenvironment{ingredients}{%
+	\par\noindent {\bfseries Ingredients}
+	\begin{itemize}[label={$-$}]
+}{			
+	\end{itemize}}
+\newenvironment{instructions}{%
+	\par\noindent {\bfseries Instructions}\par
+}{}
+
+\renewcommand{\partname}{}
+\renewcommand{\thepart}{}
+
+\pagestyle{fancy}
+\def\headrulewidth{0pt}
+\rhead{}
+\lhead{}
+\cfoot{--\,\thepage\,--}
+
+\begin{document}
+
+\part{Aperol}
+\begin{drink}{Candy Trail}
+	\begin{ingredients}
+		\item 6 basil leaves
+		\item \threequarter\ ounce lemon juice
+		\item \half\ ounce apricot brandy
+		\item \half\ ounce peach liqueur
+		\item 1 ounce Aperol
+	\end{ingredients}
+	\begin{instructions}
+		Add all liquids to a cocktail shaker filled with ice. Tear and rub together the basil leaves in your hand to bring out the flavour. Add the leaves to the shaker and shake vigorously. Double strain into a chilled coupe glass. Garnish with one or more basil leaves.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Gentle Kiss}
+	\begin{ingredients}
+		\item \threequarter\ to 1 ounce egg white
+		\item \threequarter\ ounce lemon juice
+		\item 1 bar spoon China China liqueur
+		\item \half\ ounce Salers Gentiane
+		\item \half\ ounce St. Germain
+		\item 2 dashes of orange bitters
+		\item 1 ounce Aperol
+	\end{ingredients}
+	\begin{instructions}
+	\end{instructions}
+\end{drink}
+
+\part{Gin}
+
+\begin{drink}{Bramble}
+	\begin{ingredients}
+	\item 1-\half\ ounces Gin
+	\item \threequarter\ ounce Fresh Lemon Juice
+	\item \half\ ounce Simple Syrup
+	\item \threequarter\ ounce Cr\`eme de Mure
+	\end{ingredients}
+	\begin{instructions}
+		Build in the glass, fill half the glass with crushed ice. Add your preffered gin, fresh lemon juice and simple syrup. Overload the glass with ice and add the Cr\`eme de Mure over the top of the ice to cascade down the sides of the glass. Garnish with blackberries (or something else).
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Clover Club}
+	\begin{ingredients}
+		\item 1-\half\ ounces Gin
+		\item \threequarter\ ounce Fresh Lemon Juice
+		\item \threequarter\ ounce Raspberry Syrup
+		\item Fresh Egg White
+	\end{ingredients}
+	\begin{instructions}
+		Add gin, lemon juice, and raspberry syrup to a mixing glass. Add the egg white to the glass and dry shake; this will emulsify the egg. Add ice to the glass and shake again. Finish by straining into a chilled coupe glass. This drink does not traditionally have a garnish but you may add one.
+	\end{instructions}
+\end{drink}
+\begin{drink}{Green Eyes}
+	\begin{ingredients}
+			\item \half\ ounce egg white
+			\item 1-\half\ ounces gin
+			\item \threequarter\ ounce Green Chartreuse
+			\item \threequarter\ ounce fresh lime juice
+			\item \half\ ounce rich (2:1) simple syrup
+	\end{ingredients}
+	\begin{instructions}
+		Add half an ounce of egg white to your cocktail shaker, followed by a single ice cube, and dry shake. Next, add an ounce and a half of gin and three quarters of an ounce of both Green Chartreuse and fresh lime juice. To finish, add half an ounce of rich simple syrup, shake, and serve in a chilled double old fashioned glass.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Green Ghost}
+	\begin{ingredients}
+		\item 2 ounces gin
+		\item \half\ ounce Green Chartreuse
+		\item \half\ ounce fresh lime juice
+	\end{ingredients}
+	\begin{instructions}
+		Fill a cocktail shaker with ice. Add two ounces of gin and half an ounce of both Green Chartreuse and fresh lime juice. Shake and strain into a martini glass.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Negroni}
+	\begin{ingredients}
+		\item \half\ ounce Campari
+		\item \half\ ounce sweet vermouth
+		\item 1-\half\ ounces gin
+	\end{ingredients}
+	\begin{instructions}
+		This cocktail is built directly in the glass. Place a large sphere or cube of ice in an old fashioned glass and pour in the ingredients. Stir a little to incorporate and reach the desired dilution. Garnish with the zest of a lemon.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{The Sky is the Lemon}
+	\begin{ingredients}
+		\item 1 ounce Lab Infernal Ginger syrup
+		\item \threequarter\ ounce fresh lemon juice
+		\item \half\ ounce Galliano vanilla liqueur
+		\item \half\ ounce Massenez lime and ginger liqueur
+		\item 1 ounce gin
+		\item 35\% cream, whipped
+		\item Vanilla sugar
+	\end{ingredients}
+	\begin{instructions}
+		Whip the cream until thick but unable to form light peaks and set aside. Pour all ingredients (except cream and sugar) into a cocktail shaker filled with ice. Shake vigorously. Filter into a martini glass. Gently pour the partially-whipped cream on the top of the cocktail. Sprinkle with vanilla sugar. Garnish with grated lime peel.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Southside}
+	\begin{ingredients}
+		\item 2 ounces gin
+		\item \threequarter\ ounce fresh lime juice
+		\item \threequarter\ ounce simple syrup
+		\item 4--5 mint leaves
+	\end{ingredients}
+	\begin{instructions}
+		Fill a Boston glass with ice. Add two ounces of gin, followed by three quarters of an ounce of both fresh lime juice and simple syrup. Finish by adding four or five mint leaves to your glass and shake. Double strain into a chilled coupe glass.
+	\end{instructions}
+\end{drink}
+
+
+\part{Vermouth}
+
+\begin{drink}{No-'Merica}
+	\begin{ingredients}
+		\item 1 ounce sweet vermouth
+		\item 1 ounce Aperol
+		\item 3 dashes of cherry bitters
+		\item Elderflower tonic water
+	\end{ingredients}
+	\begin{instructions}
+		Build this cocktail in an old fashioned glass. Fill the glass with ice and add the bittes, Aperol, vermouth, and then the tonic. Stir gently with a bar spoon. Garnish with a slice of lemon. 
+	\end{instructions}
+\end{drink}
+
+\part{Vodka}
+
+\begin{drink}{Cosmolab}
+	\begin{ingredients}
+		\item 1-\half\ ounces vodka
+		\item \half\ ounce Cura\c cao orange liqueur
+		\item \onequarter\ lime, pressed
+		\item \onequarter\ ounce Lab Infernal Ginger syrup
+		\item 1-\half\ ounces cranberry juice
+	\end{ingredients}
+	\begin{instructions}
+		Place all ingredients in a shaker and add ice. Shake well and pour with a strainer into a martini glass. Sprinkle with golg and garnish with a cherry.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Caipiroska}
+	\begin{ingredients}	
+		\item 2 ounces vodka
+		\item \half\ to \threequarter\ of a lime
+		\item 3 bar spoons sugar
+	\end{ingredients}
+	\begin{instructions}
+		Place four to six eighths of a lime into a cocktail shaker and add three bar spoons of sugar, then muddle the ingredients in the shaker. Fill the cocktail shaker with ice and add two ounces of vodka. Shake and pour into a chilled old fashioned glass.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Harvey Wallbanger}
+	\begin{ingredients}
+		\item \onequarter\ ounce Galliano
+		\item 2 ounces vodka
+		\item 4 ounces fresh orange juice
+	\end{ingredients}
+	\begin{instructions}
+		Build this cocktail in a highball or rocks glass by adding one quarter of an ounce of Galliano liqueur, followed by two ounces of vodka. Fill your glass with ice and pour in four ounces of fresh orange juice. Stir and serve.
+	\end{instructions}
+\end{drink}
+
+\part{Rum}
+
+\begin{drink}{The President}
+	\begin{ingredients}
+		\item 1-\half\ ounces amber rum
+		\item \half\ ounce dry vermouth
+		\item 1 tablespoon Cointreau
+		\item 1 bar spoon vintage Grenadine
+	\end{ingredients}
+	\begin{instructions}
+		Add ice to a mixing glass, followed by all of the ingredients. Stir with a bar spoon to cool and reach the desired dilution. Strain into a chilled coupe glass. Garnish with a candied cherry or orange zest.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Rastafire}
+	\begin{ingredients}
+		\item 2 bar spoons of maple syrup
+		\item 2 drops Jamaican Jerk bitters
+		\item 1 dash chocolate bitters
+		\item \half\ ounce single malt scotch whiskey
+		\item 1-\half\ ounces dark rum
+	\end{ingredients}
+	\begin{instructions}
+		Add ice to a mixing glass and add all the ingredients. Stir gently with a bar spoon to mix. Pour by filtering into an old fashioned glass containing a large ball or cube of ice. Garnish with an orange zest.
+	\end{instructions}
+\end{drink}
+
+\part{Whiskey}
+
+
+\end{document}
+
+
