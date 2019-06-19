@@ -5,17 +5,20 @@
 
 \RequirePackage{luatex85}
 
-\documentclass[11pt, twoside]{book}
+\documentclass[10pt, twoside]{book}
 \ifdraft
 \usepackage[showframe]{geometry}
 \else
 \usepackage{geometry}
 \fi 
 \geometry{%
-	papersize={4in,5in},
+	papersize={3in,4.5in},
 	footskip = \dimexpr\headsep-\ht\strutbox\relax,
-	margin=0.6in,
-	top=0.5in,
+	headsep = 15pt,
+	margin=0.25in,
+	top=0.2in,
+	includehead,
+	includefoot,
 }
 \usepackage{graphicx}
 \usepackage[colorlinks=true]{hyperref}
@@ -32,7 +35,7 @@
 \usepackage{fancyhdr}
 \usepackage{mdframed}
 \mdfsetup{linewidth=.5pt}
-\usepackage[cam, width=5in, height=6in, center]{crop}
+% \usepackage[cam, width=4in, height=5.5in, center]{crop}
 \usepackage{microtype}
 \usepackage{listings}
 \usepackage{enumitem}
@@ -73,7 +76,7 @@
 \newenvironment{drink}[1]{%
 	\cleardoublepage
 	\begin{center}
-		\Large #1
+		\bfseries\Large #1
 	\end{center}
 }{\newpage}
 \newenvironment{ingredients}{%
@@ -92,7 +95,9 @@
 \def\headrulewidth{0pt}
 \rhead{}
 \lhead{}
-\cfoot{--\,\thepage\,--}
+\chead{\footnotesize\scshape comprehensive cocktail manual}
+% \cfoot{\footnotesize--\,\thepage\,--}
+\cfoot{}
 
 \begin{document}
 
@@ -110,20 +115,6 @@
 	\end{instructions}
 \end{drink}
 
-\begin{drink}{Gentle Kiss}
-	\begin{ingredients}
-		\item \threequarter\ to 1 ounce egg white
-		\item \threequarter\ ounce lemon juice
-		\item 1 bar spoon China China liqueur
-		\item \half\ ounce Salers Gentiane
-		\item \half\ ounce St. Germain
-		\item 2 dashes of orange bitters
-		\item 1 ounce Aperol
-	\end{ingredients}
-	\begin{instructions}
-	\end{instructions}
-\end{drink}
-
 \part{Gin}
 
 \begin{drink}{Bramble}
@@ -134,7 +125,7 @@
 	\item \threequarter\ ounce Cr\`eme de Mure
 	\end{ingredients}
 	\begin{instructions}
-		Build in the glass, fill half the glass with crushed ice. Add your preffered gin, fresh lemon juice and simple syrup. Overload the glass with ice and add the Cr\`eme de Mure over the top of the ice to cascade down the sides of the glass. Garnish with blackberries (or something else).
+		This cocktail is build in the glass. Fill half the glass with crushed ice and add one and a half ounces of your preffered gin, three quarters of an ounce of fresh lemon juice, and half an ounce of simple syrup. Overload the glass with ice and add three quarters of an ounce of Cr\`eme de Mure over the top of the ice to cascade down the sides of the glass. Garnish with raspberries or blackberries.
 	\end{instructions}
 \end{drink}
 
@@ -146,9 +137,23 @@
 		\item Fresh Egg White
 	\end{ingredients}
 	\begin{instructions}
-		Add gin, lemon juice, and raspberry syrup to a mixing glass. Add the egg white to the glass and dry shake; this will emulsify the egg. Add ice to the glass and shake again. Finish by straining into a chilled coupe glass. This drink does not traditionally have a garnish but you may add one.
+		Add one and a half ounces of gin and three quarters of an ounce of both lemon juice and raspberry syrup to a mixing glass. Add an egg white to the glass and dry shake; this will emulsify the egg. Add ice to the glass and shake again. Finish by straining into a chilled coupe glass. This drink does not traditionally have a garnish but you may add one.
 	\end{instructions}
 \end{drink}
+
+\begin{drink}{Corpse Reviver N\textsuperscript{\d o} 2}
+	\begin{ingredients}
+		\item 1 ounce Gin
+		\item 1 ounce Cointreau orange liqueur 
+		\item 1 ounce Lillet Blanc\footnote{\em Substitutable with dry vermouth.}
+		\item 1 ounce fresh lemon juice
+		\item Dash of Absinthe
+	\end{ingredients}
+	\begin{instructions}
+		To a cocktail shaker, add an ounce of gin, Cointreau, Lillet Blanc, and fresh lemon juice. Add a slash of absinthe and fill the shaker with ice. Shake well and strain into a chilled stemmed cocktail glass. Garnish with a twist of lemon, twisting to squeeze some of the oils over the drink.
+	\end{instructions}
+\end{drink}
+
 \begin{drink}{Green Eyes}
 	\begin{ingredients}
 			\item \half\ ounce egg white
@@ -180,7 +185,7 @@
 		\item 1-\half\ ounces gin
 	\end{ingredients}
 	\begin{instructions}
-		This cocktail is built directly in the glass. Place a large sphere or cube of ice in an old fashioned glass and pour in the ingredients. Stir a little to incorporate and reach the desired dilution. Garnish with the zest of a lemon.
+		This cocktail is built directly in the glass. Place a large sphere or cube of ice in an old fashioned glass and pour in half an ounce of both Campari and sweet vermouth, followed by an ounce and a half of gin. Stir a little to incorporate and reach the desired dilution. Garnish with the zest of a lemon.
 	\end{instructions}
 \end{drink}
 
@@ -211,18 +216,17 @@
 	\end{instructions}
 \end{drink}
 
-
 \part{Vermouth}
 
 \begin{drink}{No-'Merica}
 	\begin{ingredients}
-		\item 1 ounce sweet vermouth
-		\item 1 ounce Aperol
 		\item 3 dashes of cherry bitters
+		\item 1 ounce Aperol
+		\item 1 ounce sweet vermouth
 		\item Elderflower tonic water
 	\end{ingredients}
 	\begin{instructions}
-		Build this cocktail in an old fashioned glass. Fill the glass with ice and add the bittes, Aperol, vermouth, and then the tonic. Stir gently with a bar spoon. Garnish with a slice of lemon. 
+		Build this cocktail in an old fashioned glass. Fill the glass with ice and add three dashes of cherry bitters, an ounce of Aperol, an ounce of vermouth, and then the tonic. Stir gently with a bar spoon. Garnish with a slice of lemon. 
 	\end{instructions}
 \end{drink}
 
@@ -231,7 +235,7 @@
 \begin{drink}{Cosmolab}
 	\begin{ingredients}
 		\item 1-\half\ ounces vodka
-		\item \half\ ounce Cura\c cao orange liqueur
+		\item \half\ ounce Pierre Ferrand Dry Cura\c cao
 		\item \onequarter\ lime, pressed
 		\item \onequarter\ ounce Lab Infernal Ginger syrup
 		\item 1-\half\ ounces cranberry juice
@@ -269,7 +273,7 @@
 	\begin{ingredients}
 		\item 1-\half\ ounces amber rum
 		\item \half\ ounce dry vermouth
-		\item 1 tablespoon Cointreau
+		\item 1 tablespoon Cointreau orange liqueur
 		\item 1 bar spoon vintage Grenadine
 	\end{ingredients}
 	\begin{instructions}
@@ -282,11 +286,11 @@
 		\item 2 bar spoons of maple syrup
 		\item 2 drops Jamaican Jerk bitters
 		\item 1 dash chocolate bitters
-		\item \half\ ounce single malt scotch whiskey
+		\item \half\ ounce peaty single malt scotch
 		\item 1-\half\ ounces dark rum
 	\end{ingredients}
 	\begin{instructions}
-		Add ice to a mixing glass and add all the ingredients. Stir gently with a bar spoon to mix. Pour by filtering into an old fashioned glass containing a large ball or cube of ice. Garnish with an orange zest.
+		Add ice to a mixing glass then add two bar spoons of maple syrup, two drops of Jamaican Jerk bitters, a dash of chocolate bitters, half an ounce of a peaty single malt scotch, and one and a half ounces of dark rum. Stir gently with a bar spoon to mix. Pour by filtering into an old fashioned glass containing a large ball or cube of ice. Garnish with an orange zest.
 	\end{instructions}
 \end{drink}
 
