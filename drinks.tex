@@ -73,12 +73,13 @@
 \newcommand{\half}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 2}\,}}
 \newcommand{\onequarter}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 4}\,}}
 \newcommand{\threequarter}{\ensuremath{\sfrac{\mathrm 3}{\mathrm 4}\,}}
+\newcount\drinks\drinks=0
 \newenvironment{drink}[1]{%
 	\cleardoublepage
 	\begin{center}
 		\bfseries\Large #1
 	\end{center}
-}{\newpage}
+}{\global\advance\drinks by 1\relax\newpage}
 \newenvironment{ingredients}{%
 	\par\noindent {\bfseries Ingredients}
 	\begin{itemize}[label={$-$}]
@@ -116,6 +117,18 @@
 \end{drink}
 
 \part{Gin}
+
+\begin{drink}{Basil Smash}
+	\begin{ingredients}
+		\item 2 ounces Gin
+		\item \threequarter\ ounce Fresh Lemon Juice
+		\item \threequarter\ ounce Simple Syrup
+		\item 4--6 Leaves of Fresh Basil
+	\end{ingredients}
+	\begin{instructions}
+		Add two ounces of gin to a cocktail shaker, followed by three quarters of an ounce of both fresh lemon juice and simple syrup, and finally four to six leaves (torn in half) of fresh basil. When you shake the cocktail, the ice will bruise the basil, imparting its herbal notes on the drink. Fill the cocktail shaker with ice, shake vigorously, and strain over ice into an old fashioned glass. Garnish with a sprig of basil.		
+	\end{instructions}
+\end{drink}
 
 \begin{drink}{Bramble}
 	\begin{ingredients}
@@ -163,7 +176,7 @@
 			\item \half\ ounce rich (2:1) simple syrup
 	\end{ingredients}
 	\begin{instructions}
-		Add half an ounce of egg white to your cocktail shaker, followed by a single ice cube, and dry shake. Next, add an ounce and a half of gin and three quarters of an ounce of both Green Chartreuse and fresh lime juice. To finish, add half an ounce of rich simple syrup, shake, and serve in a chilled double old fashioned glass.
+		Add half an ounce of egg white to your cocktail shaker, followed by a single ice cube, and dry shake. Next, add an ounce and a half of gin and three quarters of an ounce of both Green Chartreuse and fresh lime juice. To finish, add half an ounce of rich simple syrup, fill with ice, shake, and serve in a chilled double old fashioned glass.
 	\end{instructions}
 \end{drink}
 
@@ -326,7 +339,7 @@
 		\item 2 bar spoons of maple syrup
 		\item 2 drops Jamaican Jerk bitters
 		\item 1 dash chocolate bitters
-		\item \half\ ounce peaty single malt scotch
+		\item \half\ ounce peated single malt scotch
 		\item 1-\half\ ounces dark rum
 	\end{ingredients}
 	\begin{instructions}
@@ -334,7 +347,58 @@
 	\end{instructions}
 \end{drink}
 
+\part{Tequila}
+
+\begin{drink}{Strawberry Fields}
+	\begin{ingredients}
+		\item 1-\half\ ounces Tequila
+		\item \half\ ounce Campari
+		\item \half\ ounce Orgeat
+		\item \half\ ounce Fresh Lime Juice
+		\item \threequarter\ ounce Strawberry Syrup
+	\end{ingredients}
+	\begin{instructions}
+		Add an ounce and a half of tequila to a cocktail shaker, followed by half an ounce of Campari, Orgeat, and fresh lime juice. Then add three quarters of an ounce of strawberry syrup and fill the cocktail shaker with ice. Fill an old fashioned class with ice and strain the cocktail into the glass. Garnish with half of a strawberry.
+	\end{instructions}
+\end{drink}
+
 \part{Whiskey}
+
+\begin{drink}{Blood \& Sand}
+	\begin{ingredients}
+		\item \threequarter\ ounce Scotch Whiskey%
+			\footnote{Smokey whiskies may be overpowering in this drink. For this reason, avoid Islay whiskies here; steer towards a blended whiskey.}
+		\item \threequarter\ ounce Sweet Vermouth
+		\item \threequarter\ ounce Heering Cherry Liqueur
+		\item \threequarter\ once Fresh Orange Juice
+	\end{ingredients}
+	\begin{instructions}
+		This cocktail is a shaken cocktail so add three quarters of an ounce of Scotch whiskey to your cocktail shaker, followed by equal measures of sweet vermouth, cherry liqueur, and fresh orange juice. Fill your shaker with ice and shake vigorously. Strain into a chilled coupe glass and add a twist of orange as a garnish. 
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Bobby Burns}
+	\begin{ingredients}
+		\item 1-\half\ ounces Blended Scotch Whiskey
+		\item 1-\half\ ounces Sweet Vermouth
+		\item \threequarter\ ounce Dom Benedictine
+	\end{ingredients}
+	\begin{instructions}
+		Build this cocktail in a mixing glass by adding an ounce and a half of blended Scotch whiskey, followed by one and half ounces of sweet vermouth and finally three quarters of an ounce of Dom Benedictine. Fill the mixing glass with ice and stir for about thirty seconds. Strain into a chilled Nick and Nora glass. To garnish add a twist of lemon, bending or twisting it over the drink to express the oils in the lemon.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{The Expat}
+	\begin{ingredients}
+		\item 2 ounces Bourbon Whiskey
+		\item 1 ounce Fresh Lime Juice
+		\item \threequarter\ ounce Simple Syrup
+		\item 2 dashes Angostura Bitters
+	\end{ingredients}
+	\begin{instructions}
+		Add two ounces of bourbon to a cocktail sha\-ker, followed by an ounce of fresh lime juice and three quarters of an ounce of simple syrup. Finish with two dashes of Angostura bitters and ice. Shake well and strain into a chilled coupe glass. Garnish with a mint leaf.
+	\end{instructions}
+\end{drink}
 
 \begin{drink}{Greenpoint}
 	\begin{ingredients}
@@ -346,6 +410,54 @@
 	\end{ingredients}
 	\begin{instructions}
 		Add two ounces of rye whiskey to a mixing glass, followed by half an ounce of both yellow Chartreuse and sweet vermouth. Splash in a dash of Angostura bitters and orange bitters. Fill the mixing glass with ice and stir for about thirty to fourty seconds. Strain into a chilled coupe class and garnish with a twist of lemon.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{The Mean Fiddler}
+	\begin{ingredients}
+		\item 1 ounce Irish Whiskey
+		\item \threequarter\ ounce Green Chartreuse 
+		\item \threequarter\ ounce Sweet Vermouth
+		\item \half\ ounce Single Malt Scotch
+		\item \half\ ounce Campari
+		\item 1 bar spoon Cinnamon Syrup
+		\item 2 dashes Angostura Bitters
+	\end{ingredients}
+	\begin{instructions}
+		To a mixing glass with ice, add an ounce of your preferred Irish whiskey, followed by three quarters of an ounce of both Green Chartreuse and sweet vermouth, and then half an ounce of both a peaty single malt scotch and Campari. Finally add a bar spoon of cinnamin syrup and two dashes of Angostura bitters. Stir for about thirty seconds and strain into a chilled Nick and Nora glass.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Old Barrel}
+	\begin{ingredients}
+		\item 2 ounces Rye Whiskey
+		\item \half\ ounce Dom Benedictine
+		\item \half\ ounce Amontillado Sherry
+		\item 2 dashes Angostura bitters
+	\end{ingredients}
+	\begin{instructions}
+		Build this cocktail in an old fashioned glass starting with two ounces of rye whiskey, followed by half an ounce of both Dom Benedictine and Amontillado sherry. Finsh with two dashes of Angostura bitters. Add ice to the glass and stir for about thirty seconds. Garnish with a large lemon twist, bending to express the oils over the drink.		
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Needle in the Hay}
+	\begin{ingredients}
+		\item 1 ounce Laphroaig Islay Scotch
+		\item \threequarter\ ounce Apple Brandy
+		\item 1 tea spoon Maple Syrup
+		\item 2 dashes Angostura Bitters
+	\end{ingredients}
+	\begin{instructions}
+		In a mixing glass, combine an ounce of peated Scotch, three quarters of an ounce of apple brandy, a tea spoon of maple syrup, and two dashes of Angostura bitters. Fill the mixing glass with ice and stir for twenty to thirty seconds. Strain over fresh ice into an old fashioned glass and garnish with a twist of lemon.
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Penicillin}
+	\begin{ingredients}
+		\item 
+	\end{ingredients}
+	\begin{instructions}
+		
 	\end{instructions}
 \end{drink}
 
@@ -362,5 +474,42 @@
 	\end{instructions}
 \end{drink}
 
+\begin{drink}{Rob Roy}
+	\footnotetext{The Rob Roy is essentially a Scotch Manhattan. It will be a slightly less sweet version of a classic Manhattan.}
+	\begin{ingredients}
+		\item 1-\half\ ounces Scotch Whiskey
+		\item \threequarter\ ounce Sweet Vermouth
+		\item 2 dashes Angostura Bitters
+	\end{ingredients}
+	\begin{instructions}
+		Add to your mixing glass one and a half ounces of your preferred Scotch whiskey, followed by three quarters of an ounce of sweet vermouth and half an ounce of Angostura bitters. Fill the mixing glass with ice and stir for about thirty seconds. Strain into a chilled coupe glass and garnish with a mara\-schino cherry.
+	\end{instructions}
+	
+\end{drink}
 
+\begin{drink}{Tipperary}
+	\begin{ingredients}
+		\item 1-\half ounces (or 1 ounce) Irish Whiskey
+		\item 1 ounce Sweet Vermouth
+		\item \half ounce (or 1 ounce) Green Chartreuse
+	\end{ingredients}
+	\begin{instructions}
+		To a mixing glass add an ounce and a half of whiskey, an ounce of sweet vermouth, and half an ounce of Green Chartreuse. If you are a fan of Chartreuse, feel free to use equal parts (one ounce) of all ingredients instead. Fill the mixing glass with ice and stir using a bar spoon for thirty to fourty seconds. Strain into a chilled coupe glass and garnish with a maraschino cherry on a cocktail pick.
+	\end{instructions}
+\end{drink}
+
+
+
+\cleardoublepage
+\pagestyle{empty}
+\bgroup
+\ttfamily
+\parindent=0pt
+Job Name: \jobname\relax.tex
+
+Compiled on: \today
+
+Number of recipes: \the\drinks
+
+\egroup
 \end{document}
