@@ -43,3 +43,5 @@
 *.fdb_latexmk
 *.glb
 *.core
+
+__pycache__/

@@ -8,17 +8,17 @@ import shutil
 import subprocess
 import tempfile
 
-FILE = './typesetter/template.tex'
+TEMPLATE_FILE = os.path.dirname(__file__) + '/template.tex'
 
 CROPMARKSTRUE = '\\usepackage[cam, width=4in, height=5.5in, center]{crop}'
 CROPMARKSFALSE = ''
 PGNUMSTRUE = '\\cfoot{\\footnotesize--\\,\\thepage\\,--}'
 PGNUMSFALSE = '\\cfoot{}'
-SECTION = '\n\\section{%(liquorName)s}\n'
+SECTION = '\n\\part{%(liquorName)s}\n'
 DRINK = textwrap.dedent('''\
     \\begin{drink}{%(drinkName)s}
         \\begin{ingredients}
-            %(ingredientsItems)s
+    %(ingredientsItems)s
         \\end{ingredients}
         \\begin{instructions}
             %(instructionsStr)s
@@ -46,11 +46,12 @@ class Document:
         contents = ''
         for liquor in sorted(recipes.keys()):
             contents += SECTION % {'liquorName': liquor}
-            for recipe in sorted(recipes[liquor].keys()):
+            for recipeKey in sorted(recipes[liquor].keys()):
+                recipe = recipes[liquor][recipeKey]
                 contents += str(recipe)
 
         # Load the template...
-        with open(FILE, 'r') as stream:
+        with open(TEMPLATE_FILE, 'r') as stream:
             self._template = stream.read()
 
         # ...and populate it.
@@ -84,7 +85,6 @@ class Document:
         '''
         Calls LatexMk to compile the PDF using LuaLaTeX.
         '''
-        return
 
         with tempfile.TemporaryDirectory() as tmpdir:
             texpath = tmpdir + '/cocktails.tex'
@@ -94,7 +94,7 @@ class Document:
                 texfile.write(self._document)
 
             try:
-                shutil.copyfile('./typesetter/latexmk.pl', tmpdir + '/latexmk.pl')
+                shutil.copyfile(os.path.dirname(__file__) + '/latexmk.pl', tmpdir + '/latexmk.pl')
                 latex = subprocess.Popen(
                     [
                         'perl',
@@ -115,7 +115,7 @@ class Document:
                 sys.exit(1)
 
             try:
-                os.rename(pdfpath, os.path.dirname(os.path.realpath(__file__)) + '/../cocktails.pdf')
+                os.rename(pdfpath, os.getcwd() + '/cocktails.pdf')
             except Exception as e:
                 print(
                     'Looks like Python and the OS had a few too many cocktails!',
@@ -134,7 +134,7 @@ class Recipe:
     def __str__(self) -> str:
         return DRINK % {
             'drinkName': self._name,
-            'ingredientsItems': '\n'.join(['        \\item ' + instruction for instruction in self._instructions]),
+            'ingredientsItems': '\n'.join(['        \\item ' + ingredient for ingredient in self._ingredients]),
             'instructionsStr': self._instructions
         }
 

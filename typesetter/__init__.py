@@ -78,30 +78,29 @@ def run(args: list) -> None:
         sys.exit(1)
 
     recipes = dict()
-    for d in os.listdir('./recipes/'):
-        print('d', d, os.path.isdir(os.path.dirnameos.path.realpath(__file__)))
-        if os.path.isdir('../recipes/' + d):
-            liquor = os.path.basename(d)
-            print('liquor', liquor)
+    recipesDir = os.path.dirname(os.path.dirname(__file__)) + '/recipes/'
+    for d in os.listdir(recipesDir):
+        liquorDir = recipesDir + d
+        if os.path.isdir(liquorDir):
+            liquor = os.path.basename(liquorDir)
             recipes[liquor] = dict()
-            for f in os.listdir('../recipes/' + d):
-                print('f', f)
-                if f.endsWith('.yaml') or f.endsWith('.yml'):
-                    recipe = yaml.safe_load(f)
+            for f in os.listdir(liquorDir):
+                if f.endswith('.yaml') or f.endswith('.yml'):
+                    with open(liquorDir + '/' + f, 'r') as stream:
+                        recipe = yaml.safe_load(stream)
 
-                    if recipe.get('name') is None:
-                        raise ValueError('Expected YAML file with `name\' defined.')
-                    if recipe.get('ingredients') is None:
-                        raise ValueError('Expected YAML file with `ingredients\' defined.')
-                    if recipe.get('instructions') is None:
-                        raise ValueError('Expected YAML file with `instructions\' defined.')
+                        if recipe.get('name') is None:
+                            raise ValueError('Expected YAML file with `name\' defined.')
+                        if recipe.get('ingredients') is None:
+                            raise ValueError('Expected YAML file with `ingredients\' defined.')
+                        if recipe.get('instructions') is None:
+                            raise ValueError('Expected YAML file with `instructions\' defined.')
 
-                    print('Adding recipe for', recipe['name'])
-                    recipes[liquor][recipe['name']] = template.Recipe(
-                        recipe['name'],
-                        recipe['ingredients'],
-                        recipe['instructions']
-                    )
+                        recipes[liquor][recipe['name']] = template.Recipe(
+                            recipe['name'],
+                            recipe['ingredients'],
+                            recipe['instructions']
+                        )
 
     document = template.Document(recipes, pageNums, cropMarks)
     document.typeset()
