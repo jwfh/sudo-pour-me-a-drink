@@ -5,4 +5,4 @@ import sys
 import typesetter
 
 if __name__ == '__main__':
-    typesetter.run(sys.args)
+    typesetter.run(sys.argv)

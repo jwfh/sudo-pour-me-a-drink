@@ -11,7 +11,7 @@
 \else
 \usepackage{geometry}
 \fi 
-\geometry{%
+\geometry{%%
 	papersize={3in,4.5in},
 	footskip = \dimexpr\headsep-\ht\strutbox\relax,
 	headsep = 15pt,
@@ -35,7 +35,9 @@
 \usepackage{fancyhdr}
 \usepackage{mdframed}
 \mdfsetup{linewidth=.5pt}
-\usepackage[cam, width=4in, height=5.5in, center]{crop}
+
+%(cropmarks)s
+
 \usepackage{microtype}
 \usepackage{listings}
 \usepackage{enumitem}
@@ -50,7 +52,7 @@
 	ItalicFont=GaramondPremrPro-MediumItalic.otf,
 	BoldItalicFont=GaramondPremrPro-BoldItalic.otf,
 	Scale=1.125,
-	% Numbers=OldStyle
+	%% Numbers=OldStyle
 ]
 \setmonofont[Ligatures=TeX,Scale=.85,BoldFont={Inconsolata-Bold.ttf}]{Inconsolata-Regular.ttf}
 \urlstyle{tt}
@@ -61,12 +63,12 @@
 \setlength{\marginparsep}{-5mm}
 \renewcommand{\arraystretch}{1.25}
 
-\def\maketitle{%
-	\twocolumn[%
-		\begin{center}%
+\def\maketitle{%%
+	\twocolumn[%%
+		\begin{center}%%
 			\Huge Drink Recipes
-		\end{center}%
-		\vskip 2pc%
+		\end{center}%%
+		\vskip 2pc%%
 	]
 }
 
@@ -76,18 +78,18 @@
 \newcommand{\onethird}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 3}\,}}
 \newcommand{\twothird}{\ensuremath{\sfrac{\mathrm 2}{\mathrm 3}\,}}
 \newcount\drinks\drinks=0
-\newenvironment{drink}[1]{%
+\newenvironment{drink}[1]{%%
 	\cleardoublepage
 	\begin{center}
 		\bfseries\Large #1
 	\end{center}
 }{\global\advance\drinks by 1\relax\newpage}
-\newenvironment{ingredients}{%
+\newenvironment{ingredients}{%%
 	\par\noindent {\bfseries Ingredients}
 	\begin{itemize}[label={$-$}]
 }{			
 	\end{itemize}}
-\newenvironment{instructions}{%
+\newenvironment{instructions}{%%
 	\par\noindent {\bfseries Instructions}\par
 }{}
 
@@ -99,7 +101,7 @@
 \rhead{}
 \lhead{}
 \chead{\footnotesize\scshape comprehensive cocktail manual}
-% \cfoot{\footnotesize--\,\thepage\,--}
+%(cfoot)s
 \cfoot{}
 
 \begin{document}
