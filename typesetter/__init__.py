@@ -27,6 +27,9 @@ def run(args: list) -> None:
                 Enables n-up printing with XDIMxYDIM pages per sheet. Acceptable
                 values for XDIMxYDIM are '1x2', '2x2', '2x3', etc.
 
+        -parse-only
+                Just parse the YAML files for correctness; don't compile a PDF.
+
         -h, --help
                 Prints this help message.
     ''' % {'binary': sys.argv[0]})
@@ -90,17 +93,20 @@ def run(args: list) -> None:
                         recipe = yaml.safe_load(stream)
 
                         if recipe.get('name') is None:
-                            raise ValueError('Expected YAML file with `name\' defined.')
+                            raise ValueError('Expected YAML file with `name\' defined (%s).' % (f,))
                         if recipe.get('ingredients') is None:
-                            raise ValueError('Expected YAML file with `ingredients\' defined.')
+                            raise ValueError('Expected YAML file with `ingredients\' defined (%s).' % (f,))
                         if recipe.get('instructions') is None:
-                            raise ValueError('Expected YAML file with `instructions\' defined.')
+                            raise ValueError('Expected YAML file with `instructions\' defined (%s).' % (f,))
 
                         recipes[liquor][recipe['name']] = template.Recipe(
                             recipe['name'],
                             recipe['ingredients'],
                             recipe['instructions']
                         )
+
+    if '-parse-only' in argset:
+        return
 
     document = template.Document(recipes, pageNums, cropMarks)
     document.typeset()
