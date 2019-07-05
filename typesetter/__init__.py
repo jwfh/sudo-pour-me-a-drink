@@ -27,6 +27,9 @@ def run(args: list) -> None:
                 Enables n-up printing with XDIMxYDIM pages per sheet. Acceptable
                 values for XDIMxYDIM are '1x2', '2x2', '2x3', etc.
 
+        -parse-only
+                Just parse the YAML files for correctness; don't compile a PDF.
+
         -h, --help
                 Prints this help message.
     ''' % {'binary': sys.argv[0]})
@@ -78,30 +81,32 @@ def run(args: list) -> None:
         sys.exit(1)
 
     recipes = dict()
-    for d in os.listdir('./recipes/'):
-        print('d', d, os.path.isdir(os.path.dirnameos.path.realpath(__file__)))
-        if os.path.isdir('../recipes/' + d):
-            liquor = os.path.basename(d)
-            print('liquor', liquor)
+    recipesDir = os.path.dirname(os.path.dirname(__file__)) + '/recipes/'
+    for d in os.listdir(recipesDir):
+        liquorDir = recipesDir + d
+        if os.path.isdir(liquorDir):
+            liquor = os.path.basename(liquorDir)
             recipes[liquor] = dict()
-            for f in os.listdir('../recipes/' + d):
-                print('f', f)
-                if f.endsWith('.yaml') or f.endsWith('.yml'):
-                    recipe = yaml.safe_load(f)
+            for f in os.listdir(liquorDir):
+                if f.endswith('.yaml') or f.endswith('.yml'):
+                    with open(liquorDir + '/' + f, 'r') as stream:
+                        recipe = yaml.safe_load(stream)
 
-                    if recipe.get('name') is None:
-                        raise ValueError('Expected YAML file with `name\' defined.')
-                    if recipe.get('ingredients') is None:
-                        raise ValueError('Expected YAML file with `ingredients\' defined.')
-                    if recipe.get('instructions') is None:
-                        raise ValueError('Expected YAML file with `instructions\' defined.')
+                        if recipe.get('name') is None:
+                            raise ValueError('Expected YAML file with `name\' defined (%s).' % (f,))
+                        if recipe.get('ingredients') is None:
+                            raise ValueError('Expected YAML file with `ingredients\' defined (%s).' % (f,))
+                        if recipe.get('instructions') is None:
+                            raise ValueError('Expected YAML file with `instructions\' defined (%s).' % (f,))
 
-                    print('Adding recipe for', recipe['name'])
-                    recipes[liquor][recipe['name']] = template.Recipe(
-                        recipe['name'],
-                        recipe['ingredients'],
-                        recipe['instructions']
-                    )
+                        recipes[liquor][recipe['name']] = template.Recipe(
+                            recipe['name'],
+                            recipe['ingredients'],
+                            recipe['instructions']
+                        )
+
+    if '-parse-only' in argset:
+        return
 
     document = template.Document(recipes, pageNums, cropMarks)
     document.typeset()
