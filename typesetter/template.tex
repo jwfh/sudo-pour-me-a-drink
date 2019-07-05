@@ -1,0 +1,123 @@
+\newif\ifdraft
+\draftfalse
+\newif\ifblanks
+\blanksfalse
+
+\RequirePackage{luatex85}
+
+\documentclass[10pt, twoside]{book}
+\ifdraft
+\usepackage[showframe]{geometry}
+\else
+\usepackage{geometry}
+\fi 
+\geometry{%%
+	papersize={3in,4.5in},
+	footskip = \dimexpr\headsep-\ht\strutbox\relax,
+	headsep = 15pt,
+	margin=0.25in,
+	top=0.2in,
+	includehead,
+	includefoot,
+}
+\usepackage{graphicx}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[overload]{textcase}
+\usepackage{array}
+\usepackage{xfrac}
+\usepackage{capt-of}
+\usepackage{amsmath, amssymb}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\mdfsetup{linewidth=.5pt}
+
+%(cropmarks)s
+
+\usepackage{microtype}
+\usepackage{listings}
+\usepackage{enumitem}
+\setenumerate[1]{label=(\arabic*)}
+\setenumerate[2]{label=(\alph*)}
+\setenumerate[3]{label=(\roman*)}
+\setlist[itemize]{itemsep=-.5ex}
+\RequirePackage{fontspec}
+\setmainfont{GaramondPremrPro-Medium.otf}[
+	Ligatures=TeX,	
+	BoldFont=GaramondPremrPro-Bold.otf,
+	ItalicFont=GaramondPremrPro-MediumItalic.otf,
+	BoldItalicFont=GaramondPremrPro-BoldItalic.otf,
+	Scale=1.125,
+	%% Numbers=OldStyle
+]
+\setmonofont[Ligatures=TeX,Scale=.85,BoldFont={Inconsolata-Bold.ttf}]{Inconsolata-Regular.ttf}
+\urlstyle{tt}
+
+\setcounter{secnumdepth}{2}
+
+\reversemarginpar
+\setlength{\marginparsep}{-5mm}
+\renewcommand{\arraystretch}{1.25}
+
+\def\maketitle{%%
+	\twocolumn[%%
+		\begin{center}%%
+			\Huge Drink Recipes
+		\end{center}%%
+		\vskip 2pc%%
+	]
+}
+
+\newcommand{\half}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 2}\,}}
+\newcommand{\onequarter}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 4}\,}}
+\newcommand{\threequarter}{\ensuremath{\sfrac{\mathrm 3}{\mathrm 4}\,}}
+\newcommand{\onethird}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 3}\,}}
+\newcommand{\twothird}{\ensuremath{\sfrac{\mathrm 2}{\mathrm 3}\,}}
+\newcount\drinks\drinks=0
+\newenvironment{drink}[1]{%%
+	\cleardoublepage
+	\begin{center}
+		\bfseries\Large #1
+	\end{center}
+}{\global\advance\drinks by 1\relax\newpage}
+\newenvironment{ingredients}{%%
+	\par\noindent {\bfseries Ingredients}
+	\begin{itemize}[label={$-$}]
+}{			
+	\end{itemize}}
+\newenvironment{instructions}{%%
+	\par\noindent {\bfseries Instructions}\par
+}{}
+
+\renewcommand{\partname}{}
+\renewcommand{\thepart}{}
+
+\pagestyle{fancy}
+\def\headrulewidth{0pt}
+\rhead{}
+\lhead{}
+\chead{\footnotesize\scshape comprehensive cocktail manual}
+%(cfoot)s
+\cfoot{}
+
+\begin{document}
+
+%(contents)s
+
+\cleardoublepage
+\pagestyle{empty}
+\bgroup
+\ttfamily
+\parindent=0pt
+Job Name: \jobname\relax.tex
+
+Compiled on: \today
+
+Number of recipes: \the\drinks
+
+\egroup
+\end{document}

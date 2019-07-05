@@ -35,7 +35,7 @@
 \usepackage{fancyhdr}
 \usepackage{mdframed}
 \mdfsetup{linewidth=.5pt}
-% \usepackage[cam, width=4in, height=5.5in, center]{crop}
+\usepackage[cam, width=4in, height=5.5in, center]{crop}
 \usepackage{microtype}
 \usepackage{listings}
 \usepackage{enumitem}
@@ -73,6 +73,8 @@
 \newcommand{\half}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 2}\,}}
 \newcommand{\onequarter}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 4}\,}}
 \newcommand{\threequarter}{\ensuremath{\sfrac{\mathrm 3}{\mathrm 4}\,}}
+\newcommand{\onethird}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 3}\,}}
+\newcommand{\twothird}{\ensuremath{\sfrac{\mathrm 2}{\mathrm 3}\,}}
 \newcount\drinks\drinks=0
 \newenvironment{drink}[1]{%
 	\cleardoublepage
@@ -117,6 +119,18 @@
 \end{drink}
 
 \part{Gin}
+
+\begin{drink}{Aviation}
+	\begin{ingredients}
+		\item 2 ounces London Dry Gin
+		\item \half\ ounce Maraschino Liqueur
+		\item \threequarter\ ounce Fresh Lemon Juice
+		\item 1 bar spoon Cr\`eme de Violette
+	\end{ingredients}
+	\begin{instructions}
+		Add two ounces of your London dry gin to a cocktail shaker, followed by half an ounce of Maraschino liqueur and three quarters of an ounce of fresh lemon juice. Finish with a bar spoon of Cr\`eme de Violette. Fill the shaker with ice and give it a quick shake. Strain into a chilled coupe glass. Garnish with a citrus twist or a maraschino cherry.
+	\end{instructions}
+\end{drink}
 
 \begin{drink}{Basil Smash}
 	\begin{ingredients}
@@ -428,18 +442,6 @@
 	\end{instructions}
 \end{drink}
 
-\begin{drink}{Old Barrel}
-	\begin{ingredients}
-		\item 2 ounces Rye Whiskey
-		\item \half\ ounce Dom Benedictine
-		\item \half\ ounce Amontillado Sherry
-		\item 2 dashes Angostura bitters
-	\end{ingredients}
-	\begin{instructions}
-		Build this cocktail in an old fashioned glass starting with two ounces of rye whiskey, followed by half an ounce of both Dom Benedictine and Amontillado sherry. Finsh with two dashes of Angostura bitters. Add ice to the glass and stir for about thirty seconds. Garnish with a large lemon twist, bending to express the oils over the drink.		
-	\end{instructions}
-\end{drink}
-
 \begin{drink}{Needle in the Hay}
 	\begin{ingredients}
 		\item 1 ounce Laphroaig Islay Scotch
@@ -452,12 +454,27 @@
 	\end{instructions}
 \end{drink}
 
-\begin{drink}{Penicillin}
+\begin{drink}{Old Barrel}
 	\begin{ingredients}
-		\item 
+		\item 2 ounces Rye Whiskey
+		\item \half\ ounce Dom Benedictine
+		\item \half\ ounce Amontillado Sherry
+		\item 2 dashes Angostura bitters
 	\end{ingredients}
 	\begin{instructions}
-		
+		Build this cocktail in an old fashioned glass starting with two ounces of rye whiskey, followed by half an ounce of both Dom Benedictine and Amontillado sherry. Finsh with two dashes of Angostura bitters. Add ice to the glass and stir for about thirty seconds. Garnish with a large lemon twist, bending to express the oils over the drink.		
+	\end{instructions}
+\end{drink}
+
+\begin{drink}{Penicillin}
+	\begin{ingredients}
+		\item 2 ounces Blended Scotch Whiskey
+		\item \threequarter\ ounce Fresh Lemon Juice
+		\item \threequarter\ ounce Honey-Ginger Syrup\footnote{Three quarters of an ounce split between ginger syrup and three-to-one honey syrup.}
+		\item $\sim$\onequarter\ ounce Laphroaig Islay Scotch
+	\end{ingredients}
+	\begin{instructions}
+		Fill a cocktail shaker with two ounces of your preferred blended Scotch whiskey, followed by three quarters of an ounce of both fresh lime juice and honey-ginger syrup\footnote{{\em Ibid.}}. Add ice and shake. Strain over ice into an old fashioned glass. Pour about two bar spoons of Laphroaig over the drink to add smokiness. Garnish with skewered candied ginger.
 	\end{instructions}
 \end{drink}
 
@@ -498,6 +515,17 @@
 	\end{instructions}
 \end{drink}
 
+\begin{drink}{Whiskey Smash}
+	\begin{ingredients}
+		\item 1-\twothird\ ounces Bourbon Whiskey
+		\item \threequarter\ ounce Fresh Lemon Juice
+		\item \threequarter\ ounce Simple Syrup
+		\item 4--6 Mint Leaves
+	\end{ingredients}
+	\begin{instructions}
+		Fill your cocktail shaker with one and two thirds ounces of bourbon whiskey. Add three quarters of an ounce of both fresh lemon juice and simple syrup. Tear about five mint leaves in half and place them in the shaker. Fill the shaker with ice and shake well. The ice will bruise the mint leaves causing their oils to be imparted in the cocktail. Double strain over ice into an old fashioned glass, garnishing with a sprig of mint.
+	\end{instructions}
+\end{drink}
 
 
 \cleardoublepage

@@ -43,3 +43,6 @@
 *.fdb_latexmk
 *.glb
 *.core
+
+__pycache__/
+.DS_Store
