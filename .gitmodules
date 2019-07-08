@@ -1,0 +1,6 @@
+[submodule "typesetter/modules/PyLaTeX"]
+	path = typesetter/modules/PyLaTeX
+	url = git@github.com:JelteF/PyLaTeX.git
+[submodule "typesetter/modules/UseLATEX"]
+	path = typesetter/modules/UseLATEX
+	url = git@gitlab.kitware.com:kmorel/UseLATEX.git
