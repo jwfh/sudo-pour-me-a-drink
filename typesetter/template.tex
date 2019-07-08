@@ -46,15 +46,18 @@
 \setenumerate[3]{label=(\roman*)}
 \setlist[itemize]{itemsep=-.5ex}
 \RequirePackage{fontspec}
-\setmainfont{GaramondPremrPro-Medium.otf}[
-	Ligatures=TeX,	
-	BoldFont=GaramondPremrPro-Bold.otf,
-	ItalicFont=GaramondPremrPro-MediumItalic.otf,
-	BoldItalicFont=GaramondPremrPro-BoldItalic.otf,
-	Scale=1.125,
-	%% Numbers=OldStyle
-]
-\setmonofont[Ligatures=TeX,Scale=.85,BoldFont={Inconsolata-Bold.ttf}]{Inconsolata-Regular.ttf}
+\setmainfont[%%
+	Ligatures=TeX,
+	LetterSpace=0,
+	BoldFont={* Semibold},
+	ItalicFont={* Italic},
+	BoldItalicFont={* SemiboldItalic}
+]{Adobe Garamond Pro}
+\setsansfont[%%
+	Ligatures=TeX
+]{Avenir Light}
+
+\setmonofont[Ligatures=TeX,Scale = .85,BoldFont={* Bold}]{Inconsolata}
 \urlstyle{tt}
 
 \setcounter{secnumdepth}{2}
