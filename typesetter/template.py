@@ -39,8 +39,8 @@ class Document:
         Creates the Template object.
 
         Reads the file FILE which should have the string '%(contents)s' in it
-        one or more times. Inserts `contents` parameter in all occurrences of this
-        fstring.
+        one or more times. Inserts `contents` parameter in all occurrences of
+        this string.
         '''
 
         contents = ''
@@ -82,30 +82,38 @@ class Document:
         return str(self)
 
     def typeset(self) -> None:
-        '''
-        Calls LatexMk to compile the PDF using LuaLaTeX.
-        '''
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            texpath = tmpdir + '/cocktails.tex'
+            texpath = os.path.dirname(__file__) + '/cocktails.tex'
             pdfpath = tmpdir + '/cocktails.pdf'
 
             with open(texpath, 'w') as texfile:
                 texfile.write(self._document)
 
             try:
-                shutil.copyfile(os.path.dirname(__file__) + '/latexmk.pl', tmpdir + '/latexmk.pl')
-                latex = subprocess.Popen(
+                shutil.copyfile(
+                    os.path.dirname(__file__) + '/CMakeLists.txt',
+                    tmpdir + '/CMakeLists.txt'
+                )
+                shutil.copyfile(
+                    os.path.dirname(__file__) +
+                    '/modules/UseLATEX/UseLATEX.cmake',
+                    tmpdir + '/UseLATEX.cmake'
+                )
+                generateBuildFiles = subprocess.Popen(
                     [
-                        'perl',
-                        'latexmk.pl',
-                        '-lualatex',
-                        '-halt-on-error',
-                        'cocktails'
+                        'cmake',
+                        os.path.dirname(__file__),
+                        '-GUnix Makefiles'
                     ],
                     cwd=tmpdir
                 )
-                latex.wait()
+                generateBuildFiles.wait()
+                build = subprocess.Popen(
+                    ['make'],
+                    cwd=tmpdir
+                )
+                build.wait()
             except Exception as e:
                 print(
                     'Looks like LuaLaTeX had a few too many cocktails! '
@@ -118,8 +126,9 @@ class Document:
                 os.rename(pdfpath, os.getcwd() + '/cocktails.pdf')
             except Exception as e:
                 print(
-                    'Looks like Python and the OS had a few too many cocktails!',
-                    'Renaming the cocktail manual failed with the following error:\n'
+                    'Looks like Python and the OS had a few too many '
+                    'cocktails! Renaming the cocktail manual failed with the '
+                    'following error:\n'
                 )
                 print(str(e) + '\n')
                 sys.exit(1)
@@ -134,7 +143,9 @@ class Recipe:
     def __str__(self) -> str:
         return DRINK % {
             'drinkName': self._name,
-            'ingredientsItems': '\n'.join(['        \\item ' + ingredient for ingredient in self._ingredients]),
+            'ingredientsItems': '\n'.join(
+                ['        \\item ' + ingredient
+                    for ingredient in self._ingredients]),
             'instructionsStr': self._instructions
         }
 
