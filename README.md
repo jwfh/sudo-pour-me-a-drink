@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://github.com/jwfh/sudo-pour-me-a-drink">
-    <img alt="sudo, pour me a drink" src="https://www.cs.mun.ca/~jwhouse/uploads/2019/07/sandwich.png" width="50%" />
+    <img alt="sudo, pour me a drink" src="https://jwfh.ca/assets/images/sandwich.png" width="50%" />
   </a>
 </p>
 <h1 align="center">
