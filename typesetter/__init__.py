@@ -99,10 +99,15 @@ def run(args: list) -> None:
                         if recipe.get('instructions') is None:
                             raise ValueError('Expected YAML file with `instructions\' defined (%s).' % (f,))
 
-                        recipes[liquor][recipe['name']] = template.Recipe(
-                            recipe['name'],
-                            recipe['ingredients'],
-                            recipe['instructions']
+                        if recipe.get('sortname') is None:
+                            recipeName = recipe.get('name')
+                        else:
+                            recipeName = recipe.get('sortname')
+
+                        recipes[liquor][recipeName] = template.Recipe(
+                            recipe.get('name'),
+                            recipe.get('ingredients'),
+                            recipe.get('instructions')
                         )
 
     if '-parse-only' in argset:

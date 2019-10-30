@@ -96,8 +96,7 @@ class Document:
                     tmpdir + '/CMakeLists.txt'
                 )
                 shutil.copyfile(
-                    os.path.dirname(__file__) +
-                    '/modules/UseLATEX/UseLATEX.cmake',
+                    os.path.dirname(__file__) + '/modules/UseLATEX/UseLATEX.cmake',
                     tmpdir + '/UseLATEX.cmake'
                 )
                 generateBuildFiles = subprocess.Popen(
