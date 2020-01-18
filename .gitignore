@@ -46,5 +46,6 @@
 
 __pycache__/
 .DS_Store
+.venv/
 
 typesetter/cocktails.tex

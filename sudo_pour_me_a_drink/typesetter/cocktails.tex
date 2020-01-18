@@ -1,0 +1,621 @@
+\newif\ifdraft
+\draftfalse
+\newif\ifblanks
+\blanksfalse
+
+\RequirePackage{luatex85}
+
+\documentclass[10pt, twoside]{book}
+\ifdraft
+\usepackage[showframe]{geometry}
+\else
+\usepackage{geometry}
+\fi 
+\geometry{%
+	papersize={3in,4.5in},
+	footskip = \dimexpr\headsep-\ht\strutbox\relax,
+	headsep = 15pt,
+	margin=0.5in,
+	top=0.2in,
+	includehead,
+	includefoot,
+}
+\usepackage{graphicx}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[overload]{textcase}
+\usepackage{array}
+\usepackage{xfrac}
+\usepackage{capt-of}
+\usepackage{amsmath, amssymb}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{mdframed}
+\mdfsetup{linewidth=.5pt}
+
+
+
+\usepackage{microtype}
+\usepackage{listings}
+\usepackage{enumitem}
+\setenumerate[1]{label=(\arabic*)}
+\setenumerate[2]{label=(\alph*)}
+\setenumerate[3]{label=(\roman*)}
+\setlist[itemize]{itemsep=-.5ex}
+\RequirePackage{fontspec}
+\setmainfont[%
+	Ligatures=TeX,
+	LetterSpace=0,
+	BoldFont={* Semibold},
+	ItalicFont={* Italic},
+	BoldItalicFont={* SemiboldItalic}
+]{Adobe Garamond Pro}
+\setsansfont[%
+	Ligatures=TeX
+]{Avenir Light}
+
+\setmonofont[Ligatures=TeX,Scale = .85,BoldFont={* Bold}]{Inconsolata}
+\urlstyle{tt}
+
+\setcounter{secnumdepth}{2}
+
+\reversemarginpar
+\setlength{\marginparsep}{-5mm}
+\renewcommand{\arraystretch}{1.25}
+
+\def\maketitle{%
+	\twocolumn[%
+		\begin{center}%
+			\Huge Drink Recipes
+		\end{center}%
+		\vskip 2pc%
+	]
+}
+
+\newcommand{\half}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 2}\,}}
+\newcommand{\onequarter}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 4}\,}}
+\newcommand{\threequarter}{\ensuremath{\sfrac{\mathrm 3}{\mathrm 4}\,}}
+\newcommand{\onethird}{\ensuremath{\sfrac{\mathrm 1}{\mathrm 3}\,}}
+\newcommand{\twothird}{\ensuremath{\sfrac{\mathrm 2}{\mathrm 3}\,}}
+\newcount\drinks\drinks=0
+\newenvironment{drink}[1]{%
+	\cleardoublepage
+	\begin{center}
+		\bfseries\Large #1
+	\end{center}
+}{\global\advance\drinks by 1\relax\newpage}
+\newenvironment{ingredients}{%
+	\par\noindent {\bfseries Ingredients}
+	\begin{itemize}[label={$-$}]
+}{			
+	\end{itemize}}
+\newenvironment{instructions}{%
+	\par\noindent {\bfseries Instructions}\par
+}{}
+
+\renewcommand{\partname}{}
+\renewcommand{\thepart}{}
+
+\pagestyle{fancy}
+\def\headrulewidth{0pt}
+\rhead{}
+\lhead{}
+\chead{\footnotesize\scshape comprehensive cocktail manual}
+\cfoot{\footnotesize--\,\thepage\,--}
+\cfoot{}
+
+\begin{document}
+
+
+\part{Aperol}
+\begin{drink}{Candy Trail}
+    \begin{ingredients}
+        \item 6 basil leaves
+        \item \threequarter\ ounce lemon juice
+        \item \half\ ounce apricot brandy
+        \item \half\ ounce peach liqueur
+        \item 1 ounce Aperol
+    \end{ingredients}
+    \begin{instructions}
+        Add all liquids to a cocktail shaker filled with ice. Tear and rub together the basil leaves in your hand to bring out the flavour. Add the leaves to the shaker and shake vigorously. Double strain into a chilled coupe glass. Garnish with one or more basil leaves.
+    \end{instructions}
+\end{drink}
+
+
+\part{Gin}
+\begin{drink}{Aviation}
+    \begin{ingredients}
+        \item 2 ounces London dry gin
+        \item \half\ ounce Maraschino liqueur
+        \item \threequarter\ ounce fresh lemon juice
+        \item 1 bar spoon cr\`eme de violette
+    \end{ingredients}
+    \begin{instructions}
+        Add two ounces of your London dry gin to a cocktail shaker, followed by half an ounce of Maraschino liqueur and three quarters of an ounce of fresh lemon juice. Finish with a bar spoon of cr\`eme de violette. Fill the shaker with ice and give it a quick shake. Strain into a chilled coupe glass. Garnish with a citrus twist or a maraschino cherry.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Basil Smash}
+    \begin{ingredients}
+        \item 2 ounces gin
+        \item \threequarter\ ounce fresh lemon juice
+        \item \threequarter\ ounce simple syrup
+        \item 4--6 leaves of fresh basil
+    \end{ingredients}
+    \begin{instructions}
+        Add two ounces of gin to a cocktail shaker, followed by three quarters of an ounce of both fresh lemon juice and simple syrup, and finally four to six leaves (torn in half) of fresh basil. When you shake the cocktail, the ice will bruise the basil, imparting its herbal notes on the drink. Fill the cocktail shaker with ice, shake vigorously, and strain over ice into an old fashioned glass. Garnish with a sprig of basil.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Bramble}
+    \begin{ingredients}
+        \item 1-\half\ ounces gin
+        \item \threequarter\ ounce fresh lemon juice
+        \item \half\ ounce simple syrup
+        \item \threequarter\ ounce cr\`eme de m\^ure
+    \end{ingredients}
+    \begin{instructions}
+        This cocktail is build in the glass. Fill half the glass with crushed ice and add one and a half ounces of your preferred gin, three quarters of an ounce of fresh lemon juice, and half an ounce of simple syrup. Overload the glass with ice and add three quarters of an ounce of cr\`eme de m\^ure over the top of the ice to cascade down the sides of the glass. Garnish with raspberries or blackberries.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Clover Club}
+    \begin{ingredients}
+        \item 1-\half\ ounces gin
+        \item \threequarter\ ounce fresh lemon juice
+        \item \threequarter\ ounce raspberry syrup
+        \item Fresh egg white
+    \end{ingredients}
+    \begin{instructions}
+        Add one and a half ounces of gin and three quarters of an ounce of both lemon juice and raspberry syrup to a mixing glass. Add an egg white to the glass and dry shake; this will emulsify the egg. Add ice to the glass and shake again. Finish by straining into a chilled coupe glass. This drink does not traditionally have a garnish but you may add one.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Corpse Reviver N\textsuperscript{\d o} 2}
+    \begin{ingredients}
+        \item 1 ounce gin
+        \item 1 ounce Cointreau orange liqueur
+        \item 1 ounce Lillet Blanc\footnote{\em Substitutable with dry vermouth.}
+        \item 1 ounce fresh lemon juice
+        \item Dash of absinthe
+    \end{ingredients}
+    \begin{instructions}
+        To a cocktail shaker, add an ounce of gin, Cointreau, Lillet Blanc, and fresh lemon juice. Add a slash of absinthe and fill the shaker with ice. Shake well and strain into a chilled stemmed cocktail glass. Garnish with a twist of lemon, twisting to squeeze some of the oils over the drink.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Green Eyes}
+    \begin{ingredients}
+        \item \half\ ounce egg white
+        \item 1-\half\ ounces gin
+        \item \threequarter\ ounce Green Chartreuse
+        \item \threequarter\ ounce fresh lime juice
+        \item \half\ ounce rich (2:1) simple syrup
+    \end{ingredients}
+    \begin{instructions}
+        Add half an ounce of egg white to your cocktail shaker, followed by a single ice cube, and dry shake. Next, add an ounce and a half of gin and three quarters of an ounce of both Green Chartreuse and fresh lime juice. To finish, add half an ounce of rich simple syrup, fill with ice, shake, and serve in a chilled double old fashioned glass.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Green Ghost}
+    \begin{ingredients}
+        \item 2 ounces gin
+        \item \half\ ounce Green Chartreuse
+        \item \half\ ounce fresh lime juice
+    \end{ingredients}
+    \begin{instructions}
+        Fill a cocktail shaker with ice. Add two ounces of gin and half an ounce of both Green Chartreuse and fresh lime juice. Shake and strain into a martini glass.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{The Last Word}
+    \begin{ingredients}
+        \item \threequarter\ ounce gin
+        \item \threequarter\ ounce Green Chartreuse
+        \item \threequarter\ ounce Maraschino liqueur
+        \item \threequarter\ ounce fresh lime juice
+    \end{ingredients}
+    \begin{instructions}
+        Starting with a shaker, add equal parts --- three quarters of an ounce --- of gin, Green Chartreuse, Maraschino liqueur, and fresh lime juice. Fill your cocktail shaker with ice and give it a good shake. Double strain into a chilled coupe glass. Though often left ungarnished, a lime twist is an appropriate garnish.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Negroni}
+    \begin{ingredients}
+        \item \half\ ounce Campari
+        \item \half\ ounce sweet vermouth
+        \item 1-\half\ ounces gin
+    \end{ingredients}
+    \begin{instructions}
+        This cocktail is built directly in the glass. Place a large sphere or cube of ice in an old fashioned glass and pour in half an ounce of both Campari and sweet vermouth, followed by an ounce and a half of gin. Stir a little to incorporate and reach the desired dilution. Garnish with the zest of a lemon.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{The Sky is the Lemon}
+    \begin{ingredients}
+        \item 1 ounce Lab Infernal ginger syrup
+        \item \threequarter\ ounce fresh lemon juice
+        \item \half\ ounce Galliano vanilla liqueur
+        \item \half\ ounce Massenez lime and ginger liqueur
+        \item 1 ounce gin
+        \item 35\% cream, whipped
+        \item Vanilla sugar
+    \end{ingredients}
+    \begin{instructions}
+        Whip the cream until thick but unable to form light peaks and set aside. Pour ingredients (except cream and sugar) into a shaker filled with ice. Shake vigorously. Filter into a martini glass. Gently pour the whipped cream on the top of the cocktail. Sprinkle with vanilla sugar. Garnish with grated lime peel.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Smokey Martini}
+    \begin{ingredients}
+        \item 2 ounces Tanqueray N\textsuperscript{\d o} 10 gin
+        \item \onequarter\ ounce Oban single-malt scotch
+        \item 1 barspoon dry vermouth\footnote{A variant of this drink may be made by substituting sweet vermouth for the dry vermouth and a twist of orange rather than a lemon twist to garnish.}
+        \item Lemon twist
+    \end{ingredients}
+    \begin{instructions}
+        Shake the liquid ingredients vigorously with ice. Strain into a chilled martini glass. Twist the lemon peel over the drink, and drop it in.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Sonza's Wilson Cocktail}
+    \begin{ingredients}
+        \item \half\ ounce Tanqueray N\textsuperscript{\d o} 10 gin
+        \item \half\ ounce cherry brandy
+        \item 4 dashes lemon juice
+        \item 4 dashes Grenadine
+        \item Mint sprig
+    \end{ingredients}
+    \begin{instructions}
+        Shake well and strain into a coupe glass. Garnish with a mint sprig.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Southside}
+    \begin{ingredients}
+        \item 2 ounces gin
+        \item \threequarter\ ounce fresh lime juice
+        \item \threequarter\ ounce simple syrup
+        \item 4--5 mint leaves
+    \end{ingredients}
+    \begin{instructions}
+        Fill a Boston glass with ice. Add two ounces of gin, followed by three quarters of an ounce of both fresh lime juice and simple syrup. Finish by adding four or five mint leaves to your glass and shake. Double strain into a chilled coupe glass.
+    \end{instructions}
+\end{drink}
+
+
+\part{Rum}
+\begin{drink}{Long Island Iced Tea}
+    \begin{ingredients}
+        \item \half\ ounce white rum
+        \item \half\ ounce vodka
+        \item \half\ ounce gin
+        \item \half\ ounce tequila
+        \item \half\ ounce cointreau
+        \item Coke
+        \item \threequarter\ ounce fresh lemon juice
+    \end{ingredients}
+    \begin{instructions}
+        Fill a highball glass half way with ice and add half an ounce of white rum, vodka, gin, tequila, and Cointreau. Top the glass up with ice and fill almost to the top with coke. Don't add too much coke; you should still be able to see through the drink. Add three quarters of an ounce of lemon juice and then garnish with a lime wedge.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{The President}
+    \begin{ingredients}
+        \item 1-\half\ ounces amber rum
+        \item \half\ ounce dry vermouth
+        \item 1 tablespoon Cointreau orange liqueur
+        \item 1 bar spoon vintage Grenadine
+    \end{ingredients}
+    \begin{instructions}
+        Add ice to a mixing glass, followed by all of the ingredients. Stir with a bar spoon to cool and reach the desired dilution. Strain into a chilled coupe glass. Garnish with a candied cherry or orange zest.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Rastafire}
+    \begin{ingredients}
+        \item 2 bar spoons of maple syrup
+        \item 2 drops Jamaican jerk bitters\footnote{Substitutable for a dash of Tabasco sauce.}
+        \item 1 dash chocolate bitters
+        \item \half\ ounce Laphroiag single-malt scotch
+        \item 1-\half\ ounces dark rum
+    \end{ingredients}
+    \begin{instructions}
+        Add ice to a mixing glass then add two bar spoons of maple syrup, two drops of Jamaican jerk bitters, a dash of chocolate bitters, half an ounce of a peaty single malt scotch, and one and a half ounces of dark rum. Stir gently with a bar spoon to mix. Pour by filtering into an old fashioned glass containing a large ball or cube of ice. Garnish with an orange zest.
+    \end{instructions}
+\end{drink}
+
+
+\part{Tequila}
+\begin{drink}{Strawberry Fields}
+    \begin{ingredients}
+        \item 1-\half\ ounces tequila
+        \item \half\ ounce campari
+        \item \half\ ounce orgeat
+        \item \half\ ounce fresh lime juice
+        \item \threequarter\ ounce strawberry syrup
+    \end{ingredients}
+    \begin{instructions}
+        Add an ounce and a half of tequila to a cocktail shaker, followed by half an ounce of Campari, orgeat, and fresh lime juice. Then add three quarters of an ounce of strawberry syrup and fill the cocktail shaker with ice. Fill an old fashioned class with ice and strain the cocktail into the glass. Garnish with half of a strawberry.
+    \end{instructions}
+\end{drink}
+
+
+\part{Vermouth}
+\begin{drink}{No-'Merica}
+    \begin{ingredients}
+        \item 3 dashes of cherry bitters
+        \item 1 ounce Aperol
+        \item 1 ounce sweet vermouth
+        \item Elderflower tonic water
+    \end{ingredients}
+    \begin{instructions}
+        Build this cocktail in an old fashioned glass. Fill the glass with ice and add three dashes of cherry bitters, an ounce of Aperol, an ounce of vermouth, and then the tonic. Stir gently with a bar spoon. Garnish with a slice of lemon.
+    \end{instructions}
+\end{drink}
+
+
+\part{Vodka}
+\begin{drink}{Caipiroska}
+    \begin{ingredients}
+        \item 2 ounces vodka
+        \item \half\ to \threequarter\ of a lime
+        \item 2 bar spoons sugar
+    \end{ingredients}
+    \begin{instructions}
+        Place four to six eighths of a lime into a cocktail shaker and add three bar spoons of sugar, then muddle the ingredients in the shaker. Fill the cocktail shaker with ice and add two ounces of vodka. Shake and pour into a chilled old fashioned glass.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Cosmolab}
+    \begin{ingredients}
+        \item 1-\half\ ounces vodka
+        \item \half\ ounce Pierre Ferrand dry cura\c cao
+        \item \onequarter\ lime, pressed
+        \item \onequarter\ ounce Lab infernal ginger syrup
+        \item 1-\half\ ounces cranberry juice
+    \end{ingredients}
+    \begin{instructions}
+        Place all ingredients in a shaker and add ice. Shake well and pour with a strainer into a martini glass. Sprinkle with golg and garnish with a cherry.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Harvey Wallbanger}
+    \begin{ingredients}
+        \item \onequarter\ ounce Galliano
+        \item 2 ounces vodka
+        \item 4 ounces fresh orange juice
+    \end{ingredients}
+    \begin{instructions}
+        Build this cocktail in a highball or rocks glass by adding one quarter of an ounce of Galliano liqueur, followed by two ounces of vodka. Fill your glass with ice and pour in four ounces of fresh orange juice. Stir and serve.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Sex on the Beach}
+    \begin{ingredients}
+        \item 1-\half\ ounces vodka
+        \item \half\ ounce peach liqueur
+        \item 1-\half\ ounces fresh orange juice
+        \item 1-\half\ ounces fresh cranberry juice
+    \end{ingredients}
+    \begin{instructions}
+        Start with a hurricane glass. Fill the glass with ice and add an ounce and a half of vodka, followed by half an ounce of peach liqueur. Next add one and a half ounces of fresh orange juice. Top up the glass with ice and {\em gently} add an ounce and a half of fresh cranberry juice. Garnish with a slice of orange and a maraschino cherry on a cocktail pick.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Spitfire}
+    \begin{ingredients}
+        \item 1 ounce cherry vodka
+        \item 1 ounce whiskey
+        \item 1 ounce dark rum
+    \end{ingredients}
+    \begin{instructions}
+        Shake with ice and strain over ice into a rocks glass.
+    \end{instructions}
+\end{drink}
+
+
+\part{Whiskey}
+\begin{drink}{Bellini}
+    \begin{ingredients}
+        \item 1-\half\ ounce Tennessee whiskey
+        \item 1-\half\ ounce peach pur\'ee
+        \item Champagne
+    \end{ingredients}
+    \begin{instructions}
+        Combine peach pur\'ee and whiskey in a glass. Top off with champagne.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Blood \& Sand}
+    \begin{ingredients}
+        \item \threequarter\ ounce Scotch whiskey% \footnote{Smokey whiskies may be overpowering in this drink. For this reason, avoid Islay whiskies here; steer towards a blended whiskey.}
+        \item \threequarter\ ounce Sweet Vermouth
+        \item \threequarter\ ounce Heering cherry liqueur
+        \item \threequarter\ once fresh orange juice
+    \end{ingredients}
+    \begin{instructions}
+        This cocktail is a shaken cocktail so add three quarters of an ounce of Scotch whiskey to your cocktail shaker, followed by equal measures of sweet vermouth, cherry liqueur, and fresh orange juice. Fill your shaker with ice and shake vigorously. Strain into a chilled coupe glass and add a twist of orange as a garnish.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Bobby Burns}
+    \begin{ingredients}
+        \item 1-\half\ ounces blended Scotch whiskey
+        \item 1-\half\ ounces sweet vermouth
+        \item \threequarter\ ounce Dom Benedictine
+    \end{ingredients}
+    \begin{instructions}
+        Build this cocktail in a mixing glass by adding an ounce and a half of blended Scotch whiskey, followed by one and half ounces of sweet vermouth and finally three quarters of an ounce of Dom Benedictine. Fill the mixing glass with ice and stir for about thirty seconds. Strain into a chilled Nick and Nora glass. To garnish add a twist of lemon, bending or twisting it over the drink to express the oils in the lemon.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Cactus Jack}
+    \begin{ingredients}
+        \item 1 ounce whiskey
+        \item 1 ounce pineapple vodka
+        \item 1 ounce orange juice
+    \end{ingredients}
+    \begin{instructions}
+        Add all ingredients to a shaker with ice. Shake and strain into your flask using a funnel.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{The Expat}
+    \begin{ingredients}
+        \item 2 ounces bourbon whiskey
+        \item 1 ounce fresh lime juice
+        \item \threequarter\ ounce simple syrup
+        \item 2 dashes Angostura bitters
+    \end{ingredients}
+    \begin{instructions}
+        Add two ounces of bourbon to a cocktail sha\-ker, followed by an ounce of fresh lime juice and three quarters of an ounce of simple syrup. Finish with two dashes of Angostura bitters and ice. Shake well and strain into a chilled coupe glass. Garnish with a mint leaf.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Greenpoint}
+    \begin{ingredients}
+        \item 2 ounces rye whiskey
+        \item \half\ ounce Yellow Chartreuse
+        \item \half\ ounce sweet vermouth
+        \item Dash of Angostura bitters
+        \item Dash of Orange bitters
+    \end{ingredients}
+    \begin{instructions}
+        Add two ounces of rye whiskey to a mixing glass, followed by half an ounce of both yellow Chartreuse and sweet vermouth. Splash in a dash of Angostura bitters and orange bitters. Fill the mixing glass with ice and stir for about thirty to fourty seconds. Strain into a chilled coupe class and garnish with a twist of lemon.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Innuendo}
+    \begin{ingredients}
+        \item 2 ounces Corsair Triple Smoke American whiskey
+        \item 1 ounce tea
+        \item \threequarter\ ounce peach simple syrup
+        \item \onequarter\ ounce lemon juice
+        \item Lemon peel
+    \end{ingredients}
+    \begin{instructions}
+        Shake and strain inredients into a rocks glass with ice. Garnish with a lemon peel.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{The Mean Fiddler}
+    \begin{ingredients}
+        \item 1 ounce Irish whiskey
+        \item \threequarter\ ounce Green Chartreuse
+        \item \threequarter\ ounce sweet vermouth
+        \item \half\ ounce Laphroiag single-malt Scotch
+        \item \half\ ounce Campari
+        \item 1 bar spoon cinnamon syrup
+        \item 2 dashes Angostura bitters
+    \end{ingredients}
+    \begin{instructions}
+        Add all ingredients to a mixing glass with ice. Stir for about thirty seconds. Strain into a chilled Nick \& Nora glass.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Needle in the Hay}
+    \begin{ingredients}
+        \item 1 ounce Laphroaig Islay scotch
+        \item \threequarter\ ounce apple brandy
+        \item 1 tea spoon maple syrup
+        \item 2 dashes Angostura bitters
+    \end{ingredients}
+    \begin{instructions}
+        In a mixing glass, combine an ounce of peated Scotch, three quarters of an ounce of apple brandy, a tea spoon of maple syrup, and two dashes of Angostura bitters. Fill the mixing glass with ice and stir for twenty to thirty seconds. Strain over fresh ice into an old fashioned glass and garnish with a twist of lemon.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Pomegranate Smash}
+    \begin{ingredients}
+        \item 1-\half\ ounces Makes 46 bourbon
+        \item \threequarter\ ounce pomegranate juice
+        \item \half\ ounce honey
+        \item \half\ ounce fresh lemon juice
+    \end{ingredients}
+    \begin{instructions}
+        Add all ingredients to a shaker with ice. Shake vigorously for ten seconds. Pour over ice into a rocks glass.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Rob Roy}
+    \begin{ingredients}
+        \item 2 ounces Scotch whiskey
+        \item 1 ounce sweet vermouth
+        \item 2 drops aromatic bitters
+        \item 1 Maraschino cherry
+    \end{ingredients}
+    \begin{instructions}
+        Fill a mixing glass with ice and add the liquid ingredients together. Stir gently to avoid clouding the drink. Add a Maraschino cherry to a Nick \& Nora glass and strain the resulting mixture over it.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Rusty Nail}
+    \begin{ingredients}
+        \item 1-\half\ ounce Scotch whiskey
+        \item \half\ ounce Drambuie
+    \end{ingredients}
+    \begin{instructions}
+        Shake with ice and strain into a rocks glass. If serving over ice, garnish with a wedge of lemon.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{South of New York Sour}
+    \begin{ingredients}
+        \item 2 ounces Corsair Triple Smoke American whiskey
+        \item 1 ounce lemon
+        \item 1 ounce simple syrup
+        \item 1 ounce Malbec
+        \item Egg white
+        \item 5 drops BBQ bitters
+        \item Cracked pink peppercorns
+    \end{ingredients}
+    \begin{instructions}
+        Combine whiskey, lemon, simple syrup, eff white, and bitters in a mixing tin without ice and shake to froth the egg. Add ice and shake again. Strain into a rocks glass with fresh ice. Top with the Malbec. Garnish with cracked pink peppercorns.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Whiskey Nut}
+    \begin{ingredients}
+        \item 2 ounces whiskey
+        \item 1 dash orange liqueur
+        \item 2 drops peanut extract
+        \item 6 ounces cola
+        \item 1 orange wheel
+    \end{ingredients}
+    \begin{instructions}
+        Fill a mason jar halfway with ice and add the whiskey and orange liqueur (just enough to taste). Add a small dash of peanut extract and fill with cola. Garnish with an orange wheel.
+    \end{instructions}
+\end{drink}
+
+\begin{drink}{Whiskey Sling}
+    \begin{ingredients}
+        \item 2 ounces Gentleman Jack Tennesee whiskey
+        \item \half\ ounce lemon juice
+        \item \threequarter\ ounce simple syrup
+        \item 2 dashes orange bitters
+        \item Wheel of lemon
+    \end{ingredients}
+    \begin{instructions}
+        Shake all ingredients with ice. Then strain into an ice-filled rocks glass. Garnish with a lemon wheel.
+    \end{instructions}
+\end{drink}
+
+
+
+\cleardoublepage
+\pagestyle{empty}
+\bgroup
+\ttfamily
+\parindent=0pt
+Job Name: \jobname\relax.tex
+
+Compiled on: \today
+
+Number of recipes: \the\drinks
+
+\egroup
+\end{document}

@@ -2,7 +2,7 @@
 
 
 import sys
-import typesetter
+from sudo_pour_me_a_drink import typesetter
 
 if __name__ == '__main__':
     typesetter.run(sys.argv)
