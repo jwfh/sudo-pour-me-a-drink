@@ -29,7 +29,6 @@ pipeline {
             steps {
                 script {
                     timestamps {
-                        sh(script: 'git submodule update --init --recursive', label: 'Initialize Submodules')
                         sh(script: 'poetry install --no-dev', label: 'Install Project Dependencies')
                     }
                 }
