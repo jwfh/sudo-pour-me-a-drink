@@ -24,6 +24,10 @@
 
 pipeline {
     agent { label 'amd64 && poetry' }
+    environment {
+        POETRY_VIRTUALENVS_CREATE = 'true'
+        POETRY_VIRTUALENVS_IN_PROJECT = 'true'
+    }
     stages{
         stage('Install Dependencies') {
             steps {
