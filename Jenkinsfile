@@ -28,7 +28,19 @@ pipeline {
         POETRY_VIRTUALENVS_CREATE = 'true'
         POETRY_VIRTUALENVS_IN_PROJECT = 'true'
     }
+    options {
+        // This is required if you want to clean before build
+        skipDefaultCheckout(true)
+    }
     stages{
+        stage('Clean Workspace') {
+            steps {
+                // Clean before build
+                cleanWs()
+                // We need to explicitly checkout from SCM here
+                checkout scm
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 script {
@@ -47,6 +59,16 @@ pipeline {
                     }
                 }
             }
+        }
+    }
+    post {
+        // Clean after build
+        always {
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE']])
         }
     }
 }
